@@ -1,3 +1,6 @@
 streamlit
+mediapipe
 opencv-python-headless
 pandas
+numpy
+Pillow

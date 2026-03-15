@@ -1,18 +1,7 @@
-import os
-import subprocess
-import sys
-
-# --- RUNTIME INSTALLATION HACK ---
-# Streamlit Cloud par MediaPipe install karne ka sabse foolproof tareeka
-try:
-    import mediapipe as mp
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "mediapipe==0.10.14"])
-    import mediapipe as mp
-
 import streamlit as st
 import cv2
 import numpy as np
+import mediapipe as mp
 from PIL import Image
 import math
 import pandas as pd
@@ -74,6 +63,7 @@ else:
 
 # --- Process Image ---
 if image_np is not None:
+    # Handle RGBA to RGB conversion
     if len(image_np.shape) == 3 and image_np.shape[2] == 4:
         image_np = cv2.cvtColor(image_np, cv2.COLOR_RGBA2RGB)
     
